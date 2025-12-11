@@ -1,0 +1,13 @@
+[user]
+	name = max_ksiazka
+	email = maksymilian.ksiazka@gmail.com
+[init]
+	defaultBranch = master
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[credential]
+	helper = cache
+[pull]
+	rebase = false
+[core]
+	editor = nvim
