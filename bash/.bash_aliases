@@ -3,6 +3,7 @@ alias diablo='ssh diablo.kcir.pwr.edu.pl -l mksiazka'
 alias makecpp='bash $HOME/.scripts/makecproj.sh'
 alias vim=nvim
 alias system_upgrade='sudo nala update; sudo nala upgrade'
+alias pico_load="sudo picotool load sumo.uf2 && sudo picotool reboot"
 init_pico_project() {
     if [[ $# -ne 1 ]]; then
         echo "Usage: init_pico_project <project_name>"
@@ -63,5 +64,5 @@ remote_lab() {
         echo "Usage: remotelab <port_number>"
         return 1
     fi
-    ssh s278326@remote-lab.domski.pl -p 2203 -L $1:localhost:$1 -L 8000:localhost:8000
+    ssh s278326@remote-lab.domski.pl -p 2201 -L $1:localhost:$1 -L 8000:localhost:8000
 }

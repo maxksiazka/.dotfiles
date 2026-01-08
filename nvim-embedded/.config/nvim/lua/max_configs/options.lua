@@ -89,6 +89,12 @@ vim.opt.isfname:append '@-@'
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
+if vim.fn.argc() > 0 then
+    local path = vim.fn.argv(0)
+    if vim.fn.isdirectory(path) == 1 then
+        vim.cmd("cd " .. path)
+    end
+end
 -- enable virtual errors (inline)
 vim.diagnostic.config { virtual_text = true }
 
