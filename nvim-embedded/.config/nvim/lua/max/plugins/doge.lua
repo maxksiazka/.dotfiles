@@ -78,7 +78,7 @@ return {
         g.doge_doc_standard_cpp = 'doxygen_javadoc'
 
         g.doge_doxygen_settings = {
-            char = '\\',
+            char = '@',
             brief = 1,
             params = 1,
             return_val = 1,

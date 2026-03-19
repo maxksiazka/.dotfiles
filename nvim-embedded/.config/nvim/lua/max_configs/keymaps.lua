@@ -80,44 +80,23 @@ vim.keymap.set('n', '<leader>x', '<cmd>!chmod +x %<CR>', { silent = true })
 -- vim.keymap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 --vim.keymap.set('n', '<F5>', '<cmd>CMakeRun<CR><C-w><C-w>')
-vim.keymap.set('n', '<F8>', '<cmd>w<CR><cmd>bel 10split<CR><C-w><C-w><cmd>terminal<CR>i')
-vim.keymap.set('n', '<F9>', '<cmd>q<CR>')
 
 vim.keymap.set('t', '<F9>', '<cmd>q<CR>')
+-- CMake Generation & Building
+vim.keymap.set('n', '<leader>cg', '<cmd>CMakeGenerate<CR>', { desc = 'CMake: Generate' })
+vim.keymap.set('n', '<leader>cb', '<cmd>CMakeBuild<CR>', { desc = 'CMake: Build' })
+vim.keymap.set('n', '<leader>cd', '<cmd>CMakeDebug<CR>', { desc = 'CMake: Debug' })
+
+-- Extra handy CMake shortcuts
+vim.keymap.set('n', '<leader>cr', '<cmd>CMakeRun<CR>', { desc = 'CMake: Run Executable' })
+vim.keymap.set('n', '<leader>cq', '<cmd>CMakeCloseRunner<CR>', { desc = 'CMake: Close Window' })
 --vim.keymap.set('t', '<F5>', 'make')
 -- vim.keymap.set('n', '<F5>', "<cmd>w<CR><cmd>bel 10split<CR><cmd>let $VIM_DIR=expand('%:p')<CR><C-w><C-w><cmd>terminal make<CR>")
-vim.api.nvim_create_autocmd('BufEnter', {
-    callback = function()
-        local ft = vim.bo.filetype
-        local buf_path = vim.api.nvim_buf_get_name(0)
-        local dir = vim.fn.finddir('.git', vim.fn.expand '%:p:h' .. ';') -- find .git upwards
-        if dir ~= '' then
-            dir = vim.fn.fnamemodify(dir, ':p:h:h') -- get parent of .git directory
-        else
-            dir = vim.fn.fnamemodify(buf_path, ':p:h') -- fallback to file's directory
-        end
-        local make_exists = vim.fn.filereadable(dir .. '/Makefile') == 1
-        local cmake_exists = vim.fn.filereadable(dir .. '/CMakeLists.txt') == 1
-        if ft == 'cpp' or ft == 'c' then
-            if cmake_exists then
-                vim.keymap.set('n', '<F5>', '<cmd>CMakeRun<CR><C-w><C-w>', { buffer = 0 })
-            elseif make_exists then
-                vim.keymap.set(
-                    'n',
-                    '<F5>',
-                    '<cmd>w<CR><cmd>split<CR><cmd>lcd ' .. dir .. '<CR><cmd>terminal make && ./$(basename ' .. buf_path .. ' .cpp)<CR>',
-                    { buffer = 0 }
-                )
-            else
-                vim.keymap.set('n', '<F5>', "<cmd>echo 'No CMakeLists.txt or Makefile found in project directory.'<CR>", { buffer = 0 })
-            end
-        elseif ft == 'python' then
-            vim.keymap.set('n', '<F5>', '<cmd>w<CR><cmd>bel 10split<CR><cmd>terminal python3 ' .. buf_path .. '<CR>', { buffer = 0 })
-        else
-            -- Actions for other filetypes
-        end
-    end,
-})
+-- vim.api.nvim_create_autocmd('BufEnter', {
+--     callback = function()
+--         local ft = vim.bo.filetype
+--     end,
+-- })
 
 -- Setup debug for CMake or Makefile projects
 -- vim.api.nvim_create_autocmd('BufEnter', {
