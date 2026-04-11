@@ -159,7 +159,8 @@ return { -- LSP Configuration & Plugins
                 -- root_dir = require('lspconfig.util').root_pattern('compile_commands.json','.git', 'build'),
                 cmd = {
                     'clangd',
-                    '--query-driver=/usr/bin/arm-none-eabi-g*',
+                    -- '--query-driver=/usr/bin/arm-none-eabi-g*,/usr/bin/gcc,/usr/bin/g++',
+                    '--query-driver=**',
                     '--compile-commands-dir=build',
                     '--function-arg-placeholders=0',
                     -- '--style={"BasedOnStyle": "LLVM", "IndentWidth": 4, "TabWidth": 4, "UseTab": "Never", "ColumnLimit": 80, "BreakBeforeBraces": "Attach", "PointerAlignment": "Left"}',
