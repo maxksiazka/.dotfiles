@@ -98,7 +98,7 @@ end
 vim.diagnostic.config { virtual_text = true }
 
 -- set logging to 4
-vim.lsp.set_log_level 'WARN'
+vim.lsp.log.set_level(vim.log.levels.WARN)
 
 -- enable tab support for Copilot_Chat
 -- vim.g.copilot_no_tab_map = true

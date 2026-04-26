@@ -4,6 +4,11 @@
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set('n', 'n', 'nzzzv', { desc = 'Next search result, center screen' })
+vim.keymap.set('n', 'N', 'Nzzzv', { desc = 'Previous search result, center screen' })
+
+vim.keymap.set('n', '<leader>cc', 'gcc', { remap = true, desc = 'Toggle comment for current line' })
+vim.keymap.set('v', '<leader>c', 'gc', { remap = true, desc = 'Toggle comment for selected lines' })
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
