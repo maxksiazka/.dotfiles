@@ -217,7 +217,6 @@ return { -- LSP Configuration & Plugins
         vim.list_extend(ensure_installed, {
             'stylua', -- Used to format Lua code
             'prettierd', -- Used to format JavaScript/TypeScript code
-            'prettier',
         })
         require('mason-tool-installer').setup { ensure_installed = ensure_installed }
         for server_name, config in pairs(servers) do
