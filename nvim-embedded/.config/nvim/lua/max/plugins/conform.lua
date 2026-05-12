@@ -21,6 +21,10 @@ return { -- Autoformat
             hpp = { 'clang_format' },
             -- Conform can also run multiple formatters sequentially
             python = { 'ruff' },
+            javascript = { { 'prettierd', 'prettier' } },
+            javascriptreact = { { 'prettierd', 'prettier' } },
+            typescript = { { 'prettierd', 'prettier' } },
+            typescriptreact = { { 'prettierd', 'prettier' } },
             -- xml = { 'xmlformatter'}
             --
             -- You can use a sub-list to tell conform to run *until* a formatter
